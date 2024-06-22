@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.practice.mapper.ProductMapper">
+
+    <select id="selectTest" resultType="ProductVO">
+        select * from product
+    </select>
+
+    <!--    productList-->
+    <select id="selectList" resultType="ProductDTO">
+        select id, name from product
+        order by id
+    </select>
+
+<!--    detail-->
+    <select id="selectOne" resultType="ProductDetailDTO">
+        select * from product
+        where id = #{id}
+    </select>
+
+<!--    insert-->
+    <insert id="insert" parameterType="ProductVO">
+        insert into product
+        values (seq_product.nextval, #{name}, #{price}, #{category}, #{description})
+    </insert>
+
+</mapper>
